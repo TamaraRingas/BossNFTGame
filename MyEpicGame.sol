@@ -94,6 +94,8 @@ contract MyEpicGame is ERC721 {
       bossImageURI
     );
 
-    
+    _tokenIds.increment();
   }
+
+  
 }
