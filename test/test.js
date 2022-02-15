@@ -3,7 +3,7 @@ const {ethers} = require("hardhat");
 describe("MyEpicGame", function() {
   let gameContract;
   before(async() => {
-    const gameContractFactory = await.ethers.getContractFactory("MyEpicGame");
+    const gameContractFactory = await hre.ethers.getContractFactory("MyEpicGame");
     gameContract = await gameContractFactory.deploy(
       ["Leo", "Aang", "Pikachu"],
       [
