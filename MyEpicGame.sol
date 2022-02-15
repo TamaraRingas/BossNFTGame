@@ -71,6 +71,29 @@ contract MyEpicGame is ERC721 {
         })
       );
       CharacterAttributes memory c = defaultCharacters[i];
+      console.log(
+        "Done initializing %s w/ HP %s, img %s",
+        c.name,
+        c.hp,
+        c.imageURI
+      );
     }
+
+    bigBoss = BigBoss({
+      name: bossName,
+      imageURI: bossImageURI,
+      hp: bossHp,
+      maxHp: bossHp,
+      attackDamage: bossAttackDamage
+    });
+
+    console.log(
+      "Done initializing boss %s w/ HP %s, img %s",
+      bigBoss.name,
+      bigBoss.hp,
+      bossImageURI
+    );
+
+    
   }
 }
