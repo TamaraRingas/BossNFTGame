@@ -17,7 +17,20 @@ contract MyEpicGame is ERC721 {
     uint256 characterIndex;
     string name;
     string imageURI;
+    uint256 hp;
     uint256 maxHp;
     uint256 attackDamage;
   }
+
+  struct BigBoss {
+    string name;
+    string imageURI;
+    uint256 hp;
+    uint256 maxHp;
+    uint256 attackDamage;
+  }
+
+  BigBoss public bigBoss;
+
+  
 }
