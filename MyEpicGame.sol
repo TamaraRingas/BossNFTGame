@@ -158,4 +158,10 @@ contract MyEpicGame is ERC721 {
     console.log("Boss attacked player. New player hp: %s\n", player.hp);
     emit AttackComplete(bigBoss.hp, player.hp);
   }
+
+  function getAllDefaultCharacters() public view returns (CharacterAttributes[] memory) {
+    return defaultCharacters;
+  }
+
+  
 }
