@@ -32,5 +32,6 @@ contract MyEpicGame is ERC721 {
 
   BigBoss public bigBoss;
 
-  
+  using Counters for Counters.Counter;
+  Counters.Counter private _tokenIds;
 }
