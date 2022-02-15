@@ -40,4 +40,37 @@ contract MyEpicGame is ERC721 {
   mapping(uint256 => CharacterAttributes) public nftHolderAttributes;
 
   mapping(uint256 => uint256) public nftHolders;
+
+  event CharacterNFTMinted(
+    address sender,
+    uint256 tokenId,
+    uint256 characterIndex
+  );
+
+  event AttackComplete(uint256 newBossHp, uint256 newPlayerHp);
+
+  constructor (
+    string[] memory characterNames,
+    string[] memory characterImageURIs,
+    uint256[] memory characterHp,
+    uint256[] memory characterAttackDmg,
+    string memory bossName,
+    string memory bossImageURI,
+    uint256 bossHp,
+    uint256 bossAttackDamage
+  ) ERC721("Heroes", "HERO") {
+    for (uint256 i =0; i<characterNames.length; i +=1) {
+      defaultCharacters.push(
+        CharacterAttributes({
+          characterIndex: i,
+          name: characterNames[i],
+          imageURI: characterImageURIs[i],
+          hp: characterHp[i],
+          maxHp: characterHp[i],
+          attackDamage: characterAttackDmg[i]
+        })
+      );
+      CharacterAttributes memory c = defaultCharacters[i];
+    }
+  }
 }
