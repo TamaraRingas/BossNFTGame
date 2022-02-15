@@ -34,4 +34,10 @@ contract MyEpicGame is ERC721 {
 
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
+
+  CharacterAttributes[] defaultCharacters;
+
+  mapping(uint256 => CharacterAttributes) public nftHolderAttributes;
+
+  mapping(uint256 => uint256) public nftHolders;
 }
