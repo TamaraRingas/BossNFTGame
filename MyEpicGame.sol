@@ -115,5 +115,47 @@ contract MyEpicGame is ERC721 {
       newItemId,
       _characterIndex
     );
+
+    nftHolders[msg.sender] = newItemId;
+
+    _tokenIds.increment();
+    emit CharacterNFTMinted(msg.sender, newItemId, _characterIndex);
+  }
+
+  function attackBoss() public {
+    uint256 nftTokenIfOfPlayer = nftHolders[msg.sender];
+    CharacterAttributes storage player = nftHolderAttributes[
+      nftTokenIfOfPlayer
+    ];
+    console.log(
+      "\nPlayer w/ character %s about to attack. Has %s HP and %s AD",
+      player.name,
+      player.hp,
+      player.attackDamage
+    );
+    console.log(
+      "Boss %s has %s HP and %s AD",
+      bigBoss.name,
+      bigBoss.hp,
+      bigBoss.attackDamage
+    );
+
+    require(player.hp > 0, "Error: character must have HP to attack boss.");
+    require(bigBoss.hp >0, "Error: boss must have HP to attack boss");
+
+    if (bigBoss.hp < player.attackDamage) {
+      bigBoss.hp = 0;
+    } else {
+      bigBoss.hp = bigBoss.hp - player.attackDamage;
+    }
+
+    if (player.hp < bigBoss.attackDamage) {
+      player.hp = 0        
+    } else {
+      player.hp = player.hp - bigBoss.attackDamage;
+    }
+
+    console.log("Boss attacked player. New player hp: %s\n", player.hp);
+    emit AttackComplete(bigBoss.hp, player.hp);
   }
 }
