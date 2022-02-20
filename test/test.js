@@ -1,5 +1,8 @@
+import {ethers} from 'ethers';
+
 const {expect} = require("chai");
 const {ethers} = require("hardhat");
+
 describe("MyEpicGame", function() {
   let gameContract;
   before(async() => {
